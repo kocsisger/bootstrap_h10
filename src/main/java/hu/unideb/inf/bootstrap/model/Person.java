@@ -1,6 +1,8 @@
 package hu.unideb.inf.bootstrap.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -8,6 +10,8 @@ import lombok.Data;
 @Entity
 @Table(name = "Persons")
 public class Person {
+    @Id
+    @GeneratedValue
     private long id;
     private String firstName;
     private String lastName;
