@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <title>Manage persons</title>
 </head>
 <body>
 <h1> Manage persons </h1>
-
-<table class="table table-bordered">
+<a th:href="@{/persons/new}">Add new person</a>
+<table class="table table-bordered" style="width: 80%; margin: auto">
     <thead class="table-dark">
     <tr>
         <th>First name</th>

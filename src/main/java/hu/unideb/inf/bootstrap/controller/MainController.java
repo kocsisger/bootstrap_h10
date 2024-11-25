@@ -25,4 +25,9 @@ public class MainController {
         model.addAttribute("personList", personList);
         return "persons";
     }
+
+    @GetMapping("/persons/new")
+    public String newPerson(){
+        return "newPersonForm";
+    }
 }
