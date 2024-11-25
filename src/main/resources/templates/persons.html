@@ -11,17 +11,26 @@
 <table class="table table-bordered" style="width: 80%; margin: auto">
     <thead class="table-dark">
     <tr>
+        <th></th>
         <th>First name</th>
         <th>Last name</th>
         <th>e-mail</th>
+        <th>Enabled</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     <th:block th:each="person: ${personList}">
       <tr>
+          <td th:text="${person.id}"></td>
             <td th:text="${person.firstName}">John Lennon</td>
             <td th:text="${person.lastName}">Rhythm Guitar</td>
             <td th:text="${person.email}">asdads</td>
+            <td th:text="${person.enabled}"></td>
+            <td>
+                <a th:href="@{'/persons/delete/' + ${person.id}}">Delete</a> /
+                <a th:href="@{'/persons/edit/' + ${person.id}}">Edit</a>
+            </td>
        </tr>
     </th:block>
     </tbody>
