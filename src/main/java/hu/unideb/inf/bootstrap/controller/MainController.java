@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -31,24 +32,28 @@ public class MainController {
     @GetMapping("/persons/new")
     public String newPerson(Model model){
         model.addAttribute("newPerson", new Person());
+        model.addAttribute("pageTitle", "Add new person");
         return "newPersonForm";
     }
 
     @GetMapping("/persons/edit/{id}")
     public String editPerson(@PathVariable Long id, Model model){
         model.addAttribute("newPerson", personRepository.findById(id));
+        model.addAttribute("pageTitle", "Edit person");
         return "newPersonForm";
     }
 
     @PostMapping("/persons/save")
-    public String savePerson(Person newPerson){
+    public String savePerson(Person newPerson, RedirectAttributes rd){
         personRepository.save(newPerson);
+        rd.addFlashAttribute("message", "Saved");
         return "redirect:/persons";
     }
 
     @GetMapping("/persons/delete/{id}")
-    public String deletePerson(@PathVariable Long id){
+    public String deletePerson(@PathVariable Long id, RedirectAttributes rd){
         personRepository.deleteById(id);
+        rd.addFlashAttribute("message", "Deleted");
         return "redirect:/persons";
     }
 }

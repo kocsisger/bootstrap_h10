@@ -8,6 +8,9 @@
 <body>
 <h1> Manage persons </h1>
 <a th:href="@{/persons/new}">Add new person</a>
+<div th:if="${message}" class="alert alert-success text-center">
+    [[${message}]]
+</div>
 <table class="table table-bordered" style="width: 80%; margin: auto">
     <thead class="table-dark">
     <tr>
